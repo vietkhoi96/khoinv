@@ -1,0 +1,39 @@
+- name: install mariadb
+  apt: name=mariadb-server state=latest
+
+- name: install pip
+  apt: name=pip state=latest
+
+- name: Install pyMySQL
+  pip: name=pymysql state=present
+
+- name: pass root mariadb
+  mysql_user:
+        login_user: root
+        login_password: "{{ pass }}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        user: root
+        check_implicit_admin: true
+        password: "{{ pass }}"
+        priv: "*.*:ALL,GRANT"
+        host: localhost
+
+- name: create user
+  mysql_user:
+        login_user: root
+        login_password: "{{pass}}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        name: khoinv
+        password: "{{pass}}"
+        priv: "*.*:ALL,GRANT"
+        state: present
+
+
+- name: Config DB
+  template:
+          src: 50-server.cnf.j2
+          dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+
+  notify:
+          - enable mariadb
+          - restart mariadb

@@ -1,0 +1,11 @@
+- name: Installation install software-properties-common
+  apt: name=software-properties-common
+
+- name: Repo php7.4
+  apt_repository: repo="ppa:ondrej/php"
+
+- name: install PHP7.4
+  apt: name=php7.4 state=present
+
+- name: install extension
+  apt: name={{ extension }} state=present 

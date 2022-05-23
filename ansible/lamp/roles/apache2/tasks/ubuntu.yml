@@ -1,0 +1,16 @@
+- name: install apache2
+  apt: name=apache2 update_cache=yes state=latest
+
+- name: create folder web
+  file:
+          path: /var/www/khoinv
+          state: directory
+
+- name: config vituarl host
+  template:
+          src: demoweb.conf.j2
+          dest: /etc/apache2/sites-available/demoweb.conf
+  
+  notify:
+          - enable apache2
+          - restart apache2

@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+   ServerName demohotrovps.tk
+   ServerAlias www.demohotrovps.tk
+   ServerAdmin webmaster@demohotrovps.tk
+   DocumentRoot /var/www/khoinv
+   <Directory /var/www/khoinv>
+       Options -Indexes +FollowSymLinks
+       AllowOverride All
+   </Directory>
+   ErrorLog ${APACHE_LOG_DIR}/error.log
+   CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
