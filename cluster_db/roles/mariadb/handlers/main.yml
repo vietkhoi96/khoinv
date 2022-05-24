@@ -1,0 +1,8 @@
+- name: enable mariadb
+  service: name=mysql enabled=yes
+
+- name: restart mariadb
+  service: name=mysql state=restarted
+
+- name: start mariadb
+  service: name=mysql state=started

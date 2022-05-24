@@ -1,0 +1,4 @@
+[DB]
+DB_01  			ansible_host=10.5.90.5			ansible_ssh_remote=root
+DB_02			ansible_host=10.5.90.97			anisble_ssh_remote=root
+DB_03			ansible_host=10.5.88.123		ansible_ssh_remote=root

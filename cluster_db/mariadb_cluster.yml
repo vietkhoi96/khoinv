@@ -1,0 +1,5 @@
+- name: install mariadb_cluser
+  hosts: DB
+  remote_user: root
+  roles:
+          - mariadb
