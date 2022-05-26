@@ -34,7 +34,8 @@
 - name: add server to cluster
   command: /usr/bin/galera_new_cluster
   when: inventory_hostname == "DB_01"
-  
+  notify:
+        - restart mariadb
 - name: restart service
   command: echo "start service"
 
