@@ -1,0 +1,8 @@
+- name: install lamp stack
+  hosts: all
+  remote_user: root
+  roles:
+          - {role: apache2, tags: ['apache']}
+          - {role: mariadb, tags: ['mariabd']}
+          - {role: php, tags: ['php']}
+          - {role: redis, tags: ['redis']}

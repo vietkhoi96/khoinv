@@ -1,0 +1,5 @@
+##memory
+maxmemory: maxmemory-policy noeviction
+##tcp-keepalive
+tcp: tcp-keepalive 60
+

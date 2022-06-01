@@ -1,0 +1,4 @@
+[Redis]
+Redis_1 	ansible_host=10.5.10.239	ansible_ssh_remote=root
+Redis_2		ansible_host=10.5.8.154		ansible_ssh_remote=root
+Redis_3		ansible_host=10.5.10.22		ansible_ssh_remote=root

@@ -1,0 +1,11 @@
+bind 0.0.0.0
+protected-mode no
+port 26379
+daemonize yes
+pidfile "/var/run/redis-sentinel.pid"
+logfile "/var/log/redis/sentinel.log"
+dir .
+sentinel deny-scripts-reconfig yes
+sentinel monitor {{name}} {{ip}} 6379 2
+sentinel down-after-milliseconds {{name}} 5000
+sentinel failover-timeout {{name}} 10000
