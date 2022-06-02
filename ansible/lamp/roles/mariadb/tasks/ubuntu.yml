@@ -27,6 +27,7 @@
         password: "{{pass}}"
         priv: "*.*:ALL,GRANT"
         state: present
+        host: "{{host}}"
 
 
 - name: Config DB
