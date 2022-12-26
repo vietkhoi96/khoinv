@@ -1,0 +1,5 @@
+- name: add user
+  hosts: all
+  become: yes
+  roles:
+          - {role: sshuser, tags: ['user']}
