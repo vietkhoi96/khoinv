@@ -1,23 +1,28 @@
 - name: Create user to server
   user:
-    name: "{{ user_info.user }}"
+    name: "{{ item.user }}"
     shell: /bin/bash
     createhome: yes
     state: present
+  with_items:
+      - "{{ user_info }}"
 
 - name:  Set up multiple authorized keys
   authorized_key:
-    user: "{{ user_info.user }}"
-    key: "{{ user_info.authorized_key }}"
+    user: "{{ item.user }}"
+    key: "{{ item.authorized_key }}"
     state: present
     exclusive: True
+  with_items:
+      - "{{ user_info }}"
 
 - name: Allow sudoer
   lineinfile:
-    path: /etc/sudoers.d/{{ user_info.user }}
-    line: '%{{ user_info.user }} ALL=(ALL) NOPASSWD: ALL'
+    path: /etc/sudoers.d/{{ item.user }}
+    line: '%{{ item.user }} ALL=(ALL) NOPASSWD: ALL'
     state: present
     mode: 0440
     create: yes
     validate: 'visudo -cf %s'
-
+  with_items:
+      - "{{ user_info }}"
