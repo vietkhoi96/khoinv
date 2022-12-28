@@ -26,3 +26,17 @@
     validate: 'visudo -cf %s'
   with_items:
       - "{{ user_info }}"
+
+- name: Remove the user
+  user:
+    name: "{{ item }}"
+    state: absent
+    remove: yes
+  with_items: 
+    - "{{ user_delete }}"
+- name: Remove sudoers
+  file:
+    path: /etc/sudoers.d/{{ item }}
+    state: absent
+  with_items:
+    - "{{ user_delete }}"
