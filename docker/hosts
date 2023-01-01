@@ -1,0 +1,5 @@
+[server]
+ubuntu-test			ansible_host=10.20.1.180				ansible_ssh_remote=root
+
+[docker]
+docker-2 			ansible_host=10.20.1.129				ansible_ssh_remote=root
